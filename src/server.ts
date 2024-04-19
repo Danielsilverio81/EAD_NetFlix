@@ -15,6 +15,8 @@ app.listen(PORT, () => {
     console.log("DB connection successful");
   });
   console.log(
-    `Server started successfully at port ${PORT} \n http://localhost:3000`
+    `Server started successfully at port ${PORT} \n http://localhost:3000/`
   );
+  console.log(`admin: http://localhost:3000/admin`);
+  
 });
