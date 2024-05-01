@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "createdb": "sequelize-cli db:create",
     "migrate": "sequelize-cli db:migrate",
-    "dev": "npm run createdb && npm run migrate && ts-node-dev --transpile-only src/server.ts"
+    "dockerdev": "npm run createdb && npm run migrate && ts-node-dev --transpile-only src/server.ts",
+    "dev": "ts-node-dev --transpile-only src/server.ts"
   },
   "keywords": [],
   "author": "",
