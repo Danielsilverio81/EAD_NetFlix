@@ -1,0 +1,32 @@
+services:
+  web:
+
+    build: .
+
+    image: node:22
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+
+    environment:
+      DATABASE_URL: "postgres://postgres:ead@db:5432/onebitflix_development"
+      NODE_ENV: "development"
+
+    networks:
+      - onebitflix-db
+
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: "ead"
+    
+    ports:
+      - "8990:5432"
+
+    networks:
+      - onebitflix-db
+
+networks:
+   onebitflix-db:
+       driver: bridge

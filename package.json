@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts"
+    "createdb": "sequelize-cli db:create",
+    "migrate": "sequelize-cli db:migrate",
+    "dev": "npm run createdb && npm run migrate && ts-node-dev --transpile-only src/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +17,7 @@
     "@adminjs/sequelize": "~2.1.0",
     "@adminjs/upload": "~2.0.1",
     "adminjs": "~5.5.1",
+    "dotenv": "^16.4.5",
     "express": "~4.17.2",
     "express-formidable": "~1.2.0",
     "pg": "~8.7.1",
