@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "createdb": "sequelize-cli db:create",
-    "migrate": "sequelize-cli db:migrate",
-    "container": "npm run createdb && npm run migrate && ts-node-dev --transpile-only src/server.ts",
+    "createdb": "sequelize db:info --port 5432 --host db -u postgres -p postgres && sequelize db:create || echo 'Database already exists'",
+    "migrate": "sequelize db:migrate",
+    "start": "npm run createdb && npm run migrate && ts-node-dev --transpile-only src/server.ts",
     "dev": "ts-node-dev --transpile-only src/server.ts"
   },
   "keywords": [],

@@ -27,7 +27,11 @@ services:
       - onebitflix_container_db
     env_file:
       - .env
+    volumes:
+      - db_data:/var/lib/postgresql/data
 
 networks:
   onebitflix_container_db:
     driver: bridge
+volumes:
+  db_data:
