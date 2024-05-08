@@ -3,12 +3,7 @@ import { Course } from "../models";
 export const courseService = {
   findByIdWithEpisodes: async (id: string) => {
     const courseWithEpisodes = await Course.findByPk(id, {
-      attributes: [
-      "id", 
-      "name", 
-      "synopsis", 
-      ["thumbnail_url", "thumbnailUrl"]
-    ],
+      attributes: ["id", "name", "synopsis", ["thumbnail_url", "thumbnailUrl"]],
       include: {
         association: "episodes",
         attributes: [
@@ -19,26 +14,33 @@ export const courseService = {
           ["video_url", "videoUrl"],
           ["seconds_long", "secondsLong"],
         ],
-        order: [['order', 'ASC']],
-        separate: true
+        order: [["order", "ASC"]],
+        separate: true,
       },
-    })
+    });
     return courseWithEpisodes;
   },
-  
+
   getRandomFeaturedCourses: async () => {
     const featuredCourses = await Course.findAll({
-      attributes: [ 
-      "id", 
-      "name", 
-      "synopsis", 
-      ["thumbnail_url", "thumbnailUrl"]
-    ],
-    where: {
-      featured: true,
-    }
-    })
+      attributes: ["id", "name", "synopsis", ["thumbnail_url", "thumbnailUrl"]],
+      where: {
+        featured: true,
+      },
+    });
 
-    const randomFeaturedCourses = featuredCourses.sort(() => 0.5 - Math.random())
-  }
+    const randomFeaturedCourses = featuredCourses.sort(
+      () => 0.5 - Math.random()
+    );
+
+    return randomFeaturedCourses.slice(0, 3);
+  },
+  getTopTenNewest: async () => {
+    const courses = await Course.findAll({
+      limit: 10,
+      order: [["created_at", "DESC"]],
+    });
+
+    return courses;
+  },
 };
