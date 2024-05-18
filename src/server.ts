@@ -1,15 +1,16 @@
 import express from "express";
 import { sequelize } from "./database";
 import { adminjs, adminjsRouter } from "./adminjs";
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
 import { router } from "./routes";
-dotenv.config()
+dotenv.config();
 
 const app = express();
 
-app.use(express.static('public'))
+app.use(express.static("public"));
+app.use(express.json());
 app.use(adminjs.options.rootPath, adminjsRouter);
-app.use(router)
+app.use(router);
 
 const PORT = process.env.PORT || 3000;
 
@@ -21,5 +22,4 @@ app.listen(PORT, () => {
     `Server started successfully at port ${PORT} \n http://localhost:3000/`
   );
   console.log(`admin: http://localhost:3000/admin`);
-  
 });

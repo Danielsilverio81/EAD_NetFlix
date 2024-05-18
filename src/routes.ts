@@ -8,6 +8,7 @@ const router = express.Router();
 
 //auth end Points
 router.post('/auth/register', authController.register);
+router.post('/auth/login', authController.login);
 
 //Categories end Points
 router.get("/categories", categoriesController.index);
