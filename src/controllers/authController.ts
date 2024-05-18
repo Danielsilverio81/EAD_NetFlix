@@ -55,8 +55,10 @@ export const authController = {
 
                 return res.json({ authenticate: true, user, token })
             })
-        } catch (error) {
-            
+        } catch (err) {
+            if (err instanceof Error) {
+                return res.status(400).json({ message: err.message });
+              }
         }
     }
 
