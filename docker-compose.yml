@@ -6,6 +6,8 @@ services:
       - db
     ports:
       - "3000:3000"
+    volumes:
+      - .:/usr/app
     environment:
        DB_HOST: db
        DB_DATABASE: ${DB_DATABASE}
