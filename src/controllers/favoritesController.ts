@@ -1,10 +1,10 @@
 import { Response } from "express";
-import { AuthenticationRequest } from "../middlewares/auth";
+import { AuthenticatedRequest } from "../middlewares/auth";
 import { favoriteService } from "../services/favoriteService";
 
 export const favoriteController = {
     // GET /favorites
-    index: async (req: AuthenticationRequest, res: Response) => {
+    index: async (req: AuthenticatedRequest, res: Response) => {
         const userId = req.user!.id
         try {
             const favorites = await favoriteService.findByUserId(userId)
@@ -16,7 +16,7 @@ export const favoriteController = {
         }
     },
     // POST /favorites
-    save: async (req: AuthenticationRequest, res: Response) => {
+    save: async (req: AuthenticatedRequest, res: Response) => {
         const userId = req.user!.id
         const { courseId } = req.body
 
@@ -30,7 +30,7 @@ export const favoriteController = {
         }
     },
     // DELETE /favorites/:id
-    delete: async (req: AuthenticationRequest, res: Response) => {
+    delete: async (req: AuthenticatedRequest, res: Response) => {
         const userId = req.user!.id
         const courseId = req.params.id
 

@@ -4,12 +4,12 @@ import { userService } from "../services/userService";
 import { JwtPayload } from "jsonwebtoken";
 import { UserInstance } from "../models/User";
 
-export interface AuthenticationRequest extends Request {
+export interface AuthenticatedRequest extends Request {
     user?: UserInstance | null;
 }
 
 export function ensureAuth(
-    req: AuthenticationRequest,
+    req: AuthenticatedRequest,
     res: Response,
     next: NextFunction
 ) {
@@ -35,7 +35,7 @@ export function ensureAuth(
 }
 
 export function ensureAuthByQuery(
-    req: AuthenticationRequest,
+    req: AuthenticatedRequest,
     res: Response,
     next: NextFunction
 ) {
