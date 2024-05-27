@@ -33,5 +33,6 @@ router.delete("/favorites/:id", ensureAuth, favoriteController.delete);
 
 //Likes end Points
 router.post("/likes", ensureAuth, likesController.save);
+router.delete("/likes/:id", ensureAuth, likesController.delete);
 
 export { router };
