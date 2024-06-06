@@ -27,8 +27,16 @@ router.get("/courses/:id", ensureAuth, coursesController.show);
 
 //Episodes end Points
 router.get("/episodes/stream", ensureAuthByQuery, episodesController.stream);
-router.get("/episodes/:id/watchTime", ensureAuth, episodesController.getWatchTime);
-router.post("/episodes/:id/watchTime", ensureAuth, episodesController.setWatchTime);
+router.get(
+  "/episodes/:id/watchTime",
+  ensureAuth,
+  episodesController.getWatchTime
+);
+router.post(
+  "/episodes/:id/watchTime",
+  ensureAuth,
+  episodesController.setWatchTime
+);
 
 //Favorites end Points
 router.post("/favorites", ensureAuth, favoriteController.save);
@@ -40,6 +48,7 @@ router.post("/likes", ensureAuth, likesController.save);
 router.delete("/likes/:id", ensureAuth, likesController.delete);
 
 //Users end Points
-router.get("/users/current/watching", ensureAuth, usersController.watching)
+router.get("/users/current", ensureAuth, usersController.show);
+router.get("/users/current/watching", ensureAuth, usersController.watching);
 
 export { router };
