@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import { sequelize } from "./database";
 import { adminjs, adminjsRouter } from "./adminjs";
 import dotenv from "dotenv";
@@ -6,6 +7,8 @@ import { router } from "./routes";
 dotenv.config();
 
 const app = express();
+
+app.use(cors())
 
 app.use(express.static("public"));
 app.use(express.json());
