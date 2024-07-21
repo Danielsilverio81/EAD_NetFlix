@@ -43,7 +43,6 @@ export const courseResourceFeatures: FeatureType[] = [
       key: "thumbnailUrl",
       file: "uploadThumbnail",
     },
-    uploadPath: (record, filename) =>
-      `thumbnails/course-${record.get("id")}/${filename}`,
+    uploadPath: (record, filename) => `thumbnails/course-${record.get("id")}/${filename}`,
   }),
 ];
